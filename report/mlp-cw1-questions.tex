@@ -1,5 +1,5 @@
 %% REPLACE SXXXXXX with your student number
-\def\studentNumber{SXXXXXX}
+\def\studentNumber{S2156578}
 
 
 %% START of YOUR ANSWERS
@@ -26,27 +26,44 @@
 
 %% Question 1:
 \newcommand{\questionOne} {
-\youranswer{Question 1 - Explain what these figures contain and how the curves evolve, and spot where overfitting occurs. Reason based on the min/max points and velocities (direction and magnitude of change) of the accuracy and error curves}
+\youranswer{
+    % Question 1 - Explain what these figures contain and how the curves evolve, and spot where overfitting occurs. Reason based on the min/max points and velocities (direction and magnitude of change) of the accuracy and error curves
+    the training data accuracy increases as the epoch number increases and for the validation data the accuracy stagnates at one point and slowly decreases as the epoch increases. In Figure 1b the training data error decreases as the epoch number increases and the validation data error decreases until about 12-14 epochs and start to increase rapidly as the epoch increases. The reason behind this is due to the overfitting of the training data as the model adapts too much of the training data. The point when overfitting occurs is about at the maximum accuracy by epoch and the minimum point of the error by epoch on the validation data, which is about between 12 to 14 epochs. 
+    }
 }
 
 %% Question 2:
 \newcommand{\questionTwo} {
-\youranswer{Question 2 - Present your network width experiment results by using the relevant figure and table}
+\youranswer{
+    % Question 2 - Present your network width experiment results by using the relevant figure and table
+    with an increase in amount of hidden layers from 32 to 64 to 126 the training data accuracy increases and the training data error decreases no matter the number of epochs. In terms of the accuracy for the validation data, the maximum accuracy we can achieve increases with amount of hidden layers, but as overfit the training data (increasing the epoch), the accuracy declines at a faster rate as the number of hidden layers increases. For the error for validation data, again the minimum error we achieve decreases with the increase in hidden layers, but the rate of error increasing after the point where overfitting starts to occur, increases as the amount of hidden layers increase. And eventually the accuracy of validation data for 128 hidden layers would be below the accuracy of validation data for 32 hidden layers, and the error of validation data for 128 hidden layers would be higher the error of validation data for 32 hidden layers.
+    }
 }
 
 %% Question 3:
 \newcommand{\questionThree} {
-\youranswer{Question 3 - Discuss whether varying width affects the results in a consistent way, and whether the results are expected and match well with the prior knowledge (by which we mean your expectations as are formed from the relevant Theory and literature)}
+\youranswer{
+    % Question 3 - Discuss whether varying width affects the results in a consistent way, and whether the results are expected and match well with the prior knowledge (by which we mean your expectations as are formed from the relevant Theory and literature)
+    Varying the network width affects results consistently, aligning with theoretical expectations. As hidden units increase, the model improves on training data but becomes more prone to overfitting. This leads to faster degradation in validation performance as the network size grows. While larger models initially improve validation accuracy, they decline more rapidly with longer training, which is expected due to the increased risk of overfitting in wider networks.
+    }
 }
 
 %% Question 4:
 \newcommand{\questionFour} {
-\youranswer{Question 4 - Present your network depth experiment results by using the relevant figure and table}
+\youranswer{
+    % Question 4 - Present your network depth experiment results by using the relevant figure and table
+    the difference between having one hidden layer and 2 hidden layers is pretty significant, we an constant higher training accuracy and constant lower training error, regardless of the number of epochs. In contrast, the training accuracy and error for models with two and three hidden layers are very similar, showing minimal differences. When looking at the validation data, the maximum validation accuracy for one hidden layer is noticeably lower than that of two hidden layers. However, the maximum validation accuracy for the model with three hidden layers is roughly the same as that of the two hidden layers one. The rate at which validation accuracy decreases is generally similar across the models, but the two hidden layers show a slightly faster decline. Regarding validation error, the model with one hidden layer has a higher minimum validation error, but it also shows a significantly lower rate of increase in validation error. Both the two and three hidden layer models have similar minimum validation errors, although the three hidden layer model has a slightly higher rate of increase in validation error over time.
+    }   
 }
 
 %% Question 5:
 \newcommand{\questionFive} {
-\youranswer{Question 5 - Discuss whether varying depth affects the results in a consistent way, and whether the results are expected and match well with the prior knowledge (by which we mean your expectations as are formed from the relevant Theory and literature)}
+\youranswer{
+    % Question 5 - Discuss whether varying depth affects the results in a consistent way, and whether the results are expected and match well with the prior knowledge (by which we mean your expectations as are formed from the relevant Theory and literature)
+    
+Varying the depth of neural networks shows consistent and expected results in line with deep learning theories. The substantial increase in training accuracy and decrease in error when moving from one to two hidden layers reflects improved capacity for learning complex patterns. However, the minimal performance differences between two and three layers illustrate diminishing returns, indicating that additional depth offers limited benefits.
+The notable rise in maximum validation accuracy from one to two layers contrasts with the similar performance of two and three layers, suggesting that extra depth may not significantly enhance generalization. The higher minimum validation error for the one-layer model indicates it struggles to capture data distributions effectively. Overall, while increasing depth can enhance performance, it may also risk overfitting, thereby constraining the advantages of added layers.
+    }
 }
 
 
@@ -79,13 +96,13 @@
 \begin{figure}[t]
     \centering
     \begin{subfigure}{\linewidth}
-        \includegraphics[width=\linewidth]{figures/empty_acc_curve_width.png}
+        \includegraphics[width=\linewidth]{figures/accuracy.png}
         \caption{accuracy by epoch}
         \label{fig:width_acccurves}
     \end{subfigure} 
     \begin{subfigure}{\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{figures/empty_error_curve_width.png}
+        \includegraphics[width=\linewidth]{figures/error.png}
         \caption{error by epoch}
         \label{fig:width_errorcurves}
     \end{subfigure} 
@@ -102,13 +119,13 @@
 \begin{figure}[t]
     \centering
     \begin{subfigure}{\linewidth}
-        \includegraphics[width=\linewidth]{figures/empty_acc_curve_depth.png}
+        \includegraphics[width=\linewidth]{figures/acc_layers.png}
         \caption{accuracy by epoch}
         \label{fig:depth_acccurves}
     \end{subfigure} 
     \begin{subfigure}{\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{figures/empty_error_curve_depth.png}
+        \includegraphics[width=\linewidth]{figures/error_layers.png}
         \caption{error by epoch}
         \label{fig:depth_errorcurves}
     \end{subfigure} 
@@ -154,9 +171,9 @@ Question Table 1 - Fill in Table 1 with the results from your experiments varyin
     \toprule
         \# Hidden Units & Val. Acc. & Train Error & Val. Error\\
     \midrule
-         32            &    --.-   &  -.--- &   -.---            \\
-         64            &    --.-   &  -.---  &   -.---               \\
-         128           &    --.-   &  -.---  &   -.---           \\ 
+         32            &    78.4\%   &  0.561 &   0.711            \\
+         64            &    80.7\%   &  0.336   &   0.670               \\
+         128           &    80.4\%   &  0.164  &   0.957           \\ 
     \bottomrule
     \end{tabular}
     \caption{Validation accuracy (\%) and training/validation error (in terms of cross-entropy error) for varying network widths on the EMNIST dataset.}
@@ -176,9 +193,9 @@ Question Table 2 - Fill in Table 2 with the results from your experiments varyin
     \toprule
         \# Hidden Layers & Val. Acc. & Train Error & Val. Error \\
     \midrule
-         1               &      --.-      &   -.--- & -.---                \\
-         2               &      --.-      &   -.--- & -.---                \\
-         3               &      --.-      &   -.--- & -.---                \\ 
+         1               &      82.5\%      &   0.444 & 0.551                \\
+         2               &      81.0\%      &   0.103 & 1.55                \\
+         3               &      82.5\%      &   0.0936 & 1.63                \\ 
     \bottomrule
     \end{tabular}
     \caption{Validation accuracy (\%) and training/validation error (in terms of cross-entropy error) for varying network depths on the EMNIST dataset.}
