@@ -663,12 +663,10 @@ class DropoutLayer(StochasticLayer):
         """
 
         if stochastic:
-            #If share_across_batch is true then we take 1 mask and share it across all batches,else we use 1 mask for each batch
             if self.share_across_batch:
                 mask_shape = (1,) + inputs.shape[1:]
             else:
                 mask_shape = inputs.shape
-            #Making use of the rng and np.random.uniform, we only keep the values less than the include probability for the mask
             self.mask = self.rng.uniform(0,1,size=mask_shape) < self.incl_prob
             return inputs*self.mask
         else:

@@ -296,10 +296,8 @@ class EMNISTDataProvider(DataProvider):
 
         """
         num_classes = self.num_classes
-        # Initialize all targets with α / (K - 1) where K is the number of classes
         smooth_targets = np.full((int_targets.shape[0], num_classes), alpha / (num_classes - 1))
         
-        # Assign 1 - α to the correct class for each target
         smooth_targets[np.arange(int_targets.shape[0]), int_targets] = 1.0 - alpha
     
         return smooth_targets
