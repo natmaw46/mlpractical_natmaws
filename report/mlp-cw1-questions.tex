@@ -72,19 +72,28 @@ The notable rise in maximum validation accuracy from one to two layers contrasts
 
 %% Question 6:
 \newcommand{\questionSix} {
-\youranswer{Question 6 - Explain the experimental details (e.g. hyperparameters), discuss the results in terms of their generalisation performance and overfitting. Select and test the best performing model as part of this analysis.}
+\youranswer{
+    % Question 6 - Explain the experimental details (e.g. hyperparameters), discuss the results in terms of their generalisation performance and overfitting. Select and test the best performing model as part of this analysis.
+    During training with dropout, we observed that increasing the dropout value generally improved validation accuracy and decreased validation error, although it also increased the generalization gap as training error decreased faster than validation error. For instance, using a dropout rate of 0.6 yielded the lowest validation accuracy of 80.7\% and the highest validation error of 0.593—both worse than the baseline—while the highest dropout rate of 0.97 resulted in the best validation accuracy (85.4\%) and lowest validation error (0.457). This suggests that higher dropout rates effectively reduce overfitting and improve model performance on the validation set. Conversely, both L1 and L2 regularization methods showed rapid drops in validation accuracy at higher penalty values: for L1, increasing the penalty from 1e-3 to 5e-3 caused a 74.29\% drop in validation accuracy, with 5e-4 being optimal, and for L2, increasing the penalty from 5e-3 to 5e-2 led to a 42.1\% drop, with 1e-3 being the optimal value. These accuracy drops stem from excessive regularization, which constrains model weights too heavily, leading to underfitting and limiting the model’s ability to capture important data patterns. Therefore, the best balance for generalization is achieved with a penalty of 5e-4 for L1, 1e-3 for L2 regularization and 0.97 for dropout.
+    }
 }
 
 %% Question 7:
 \newcommand{\questionSeven} {
-\youranswer{Question 7 - Assume you were able to run 8 further training instances (8 specific hyperparameter configurations) where you could combine Dropout and L1, and/or Dropout and L2 regularisation. Which 8 runs would you pick and what question(s) would you aim to answer? Make sure you define the experiment setup, including any relevant hyperparameters}
+\youranswer{
+    % Question 7 - Assume you were able to run 8 further training instances (8 specific hyperparameter configurations) where you could combine Dropout and L1, and/or Dropout and L2 regularisation. Which 8 runs would you pick and what question(s) would you aim to answer? Make sure you define the experiment setup, including any relevant hyperparameters
+    For our setup, we'll test dropout rates of 0.7, 0.85, and 0.97 (based on their prior performance) along with effective L1 and L2 penalty values of 5e-4 and 1e-3. Specifically, we'll try these configurations: dropout 0.7 with L1 penalties of 5e-4 and 1e-3, dropout 0.85 with L1 penalties of 5e-4 and 1e-3, dropout 0.97 with L1 penalties of 5e-4 and 1e-3, plus dropout rates of 0.7 and 0.85 combined with L2 penalties of 5e-4 and 1e-3. This setup should give us a good look at how different levels of dropout work with moderate regularization penalties and whether they can balance validation accuracy and error while controlling overfitting. These experiments are set up to help us figure out the best combination of dropout and regularization to boost generalization without too much drop in validation accuracy or increase in error. By focusing on key metrics like validation accuracy, train and validation error, and the generalization gap, we’re aiming to find a sweet spot where we’re reducing overfitting but still making our model robust on new data.
+    }
 }
 
 
 
 %% Question 8:
 \newcommand{\questionEight} {
-\youranswer{Question 8 - Briefly draw your conclusions based on the results from the previous sections (what are the take-away messages?), discussing them in the context of the overall literature, and conclude your report with a recommendation for future directions}
+\youranswer{
+    % Question 8 - Briefly draw your conclusions based on the results from the previous sections (what are the take-away messages?), discussing them in the context of the overall literature, and conclude your report with a recommendation for future directions
+    The results of our experiments on overfitting in neural networks trained on the EMNIST dataset yield several important conclusions. Firstly, the tendency for deeper and wider networks to overfit emphasizes the critical need for effective regularization techniques. Our findings confirm that methods such as dropout and L1/L2 penalties significantly improve model generalization, highlighting their role as essential tools in combatting overfitting. However, the balance between underfitting and overfitting underscores the necessity for careful hyperparameter tuning to achieve optimal performance.
+    }
 }
 
 %% - - - - - - - - - - - - FIGURES - - - - - - - - - - - - 
@@ -142,13 +151,13 @@ The notable rise in maximum validation accuracy from one to two layers contrasts
 \begin{figure*}[t]
     \centering
     \begin{subfigure}{.475\linewidth}
-        \includegraphics[width=\linewidth]{figures/empty_dropout_plot.png}
+        \includegraphics[width=\linewidth]{figures/dropout.png}
         \caption{Accuracy and error by inclusion probability.}
         \label{fig:dropoutrates}
     \end{subfigure} 
     \begin{subfigure}{.475\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{figures/empty_wd_plot.png}
+        \includegraphics[width=\linewidth]{figures/penalties-no-bias.png}
         \caption{Accuracy and error by weight penalty.}
         \label{fig:weightrates}
     \end{subfigure} 
@@ -219,24 +228,24 @@ Question Table 3 - Fill in Table 3 with the results from your experiments for th
         Baseline &  -                    &               0.837 &       0.241 &  0.533          \\
     \midrule
         \multirow{4}*{Dropout}
-                 & 0.6                   &  80.7                &      0.549 & 0.593     \\
-                 & 0.7 & --.- & -.--- & -.---  \\
+                 & 0.6 & 80.7 & 0.549 & 0.593 \\
+                 & 0.7 & 83.7 & 0.418 & 0.472  \\
                  & 0.85 & 85.1 &  0.329 &  0.434 \\
                  & 0.97 & 85.4 &  0.244 & 0.457  \\
     \midrule
         \multirow{4}*{L1 penalty}
                  & 5e-4 & 79.5 & 0.642 & 0.658 \\
-                 & 1e-3 & --.- & -.--- & -.--- \\
+                 & 1e-3 & 76.7 & 0.756 & 0.771 \\
                  & 5e-3 & 2.41 & 3.850 & 3.850 \\
                  & 5e-2 & 2.20 & 3.850 & 3.850 \\
     \midrule
         \multirow{4}*{L2 penalty}  
                  & 5e-4 & 85.1 & 0.306 & 0.460 \\
-                 & 1e-3 & --.- & -.--- & -.--- \\
+                 & 1e-3 & 85.2 & 0.360 & 0.427 \\
                  & 5e-3 & 81.3 & 0.586 & 0.607 \\
                  & 5e-2 & 39.2 & 2.258 & 2.256  \\
     \midrule
-        Label smoothing & 0.1 & --.- & -.--- & -.--- \\
+        Label smoothing & 0.1 & 83.0 &  0.841 & 1.25 \\
     \bottomrule
     \end{tabular}
     \caption{Results of all hyperparameter search experiments. \emph{italics} indicate the best results per series (Dropout, L1 Regularisation, L2 Regularisation, Label smoothing) and \textbf{bold} indicates the best overall.}
