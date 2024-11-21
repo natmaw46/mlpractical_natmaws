@@ -24,9 +24,16 @@
 
 %% Question 1:
 \newcommand{\questionOne} {
-\youranswer{Question 1 - Use Figures 1, 2, and 3 to identify the Vanishing Gradient Problem (which of these model suffers from it, and what are the consequences depicted?).
+% Question 1 - Use Figures 1, 2, and 3 to identify the Vanishing Gradient Problem (which of these model suffers from it, and what are the consequences depicted?).
 
-The average length for an answer to this question is approximately 1/5 of the columns in a 2-column page}
+\youranswer{The VGG38 model struggles with the Vanishing Gradient Problem, as illustrated in Figure 3. The gradients of all convolutional layer weights are effectively zero, while only the final fully connected layer shows a peak gradient of up to 0.0002.
+
+This issue arises during backpropagation, where each gradient update involves the multiplication of numerous factors. These factors, which include the derivatives of weights, biases, and non-linear activation functions, tend to approach zero. As the number of such factors increases with deeper layers, their cumulative multiplication results in the gradients diminishing to nearly zero—a phenomenon known as the Vanishing Gradient Problem.
+
+Consequently, the gradients of convolutional layer weights become negligible, preventing the model from effectively learning since the weights cannot be updated after each iteration. Table 1 confirms this, showing that VGG38 achieves a training and validation accuracy of only 0.01, highlighting the detrimental impact of the vanishing gradients.
+
+In contrast, from table 1, the VGG08 model performs significantly better, achieving a training accuracy of 51.59\% and a validation accuracy of 46.84\%. As shown in Figure 2, the gradient flow in VGG08 is normal, and it does not exhibit signs of the vanishing gradient problem, as opposed to what is observed in Figure 3 for VGG38.
+}
 }
 
 %% Question 2:
