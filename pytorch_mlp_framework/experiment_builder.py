@@ -151,12 +151,15 @@ class ExperimentBuilder(nn.Module):
         ########################################
         #TODO write your code here
         
-        for name, param in named_parameters:
-            if param.requires_grad and 'weight' in name and not('block' in name and 'bn' in name):
-                all_grads.append(abs(param.grad).mean())
-                new_name = name.replace('.weight','').replace('layer_dict.','')
-                layers.append(new_name.replace('.','_'))
-
+        for name,params in named_parameters:
+            if (params.requires_grad) and ('batch_norm' not in name) and ('bias' not in name):
+                all_grads.append(params.grad.cpu().abs().mean())
+                layer_name = name.replace('layer_dict.','_')
+                layer_name = layer_name.replace('.','')
+                if layer_name.startswith('_'):
+                    layer_name = layer_name[1:]
+                layers.append(layer_name.replace('weight',''))
+                
         ########################################
             
         
