@@ -26,22 +26,26 @@
 \newcommand{\questionOne} {
 % Question 1 - Use Figures 1, 2, and 3 to identify the Vanishing Gradient Problem (which of these model suffers from it, and what are the consequences depicted?).
 
-\youranswer{The VGG38 model struggles with the Vanishing Gradient Problem, as illustrated in Figure 3. The gradients of all convolutional layer weights are effectively zero, while only the final fully connected layer shows a peak gradient of up to 0.00035.
+\youranswer{
+    The VGG38 model encounters the Vanishing Gradient Problem, as demonstrated in Figure 3. During backpropagation, the gradients for the weights in the convolutional layers approach zero, while only the final fully connected layer exhibits a peak gradient of up to 0.00035. This issue arises because each gradient update relies on the multiplication of multiple factors, such as the derivatives of weights, biases, and non-linear activation functions. As the number of layers increases, these factors tend to diminish, leading to the gradients becoming nearly zero.
 
-This issue arises during backpropagation, where each gradient update involves the multiplication of numerous factors. These factors, which include the derivatives of weights, biases, and non-linear activation functions, tend to approach zero. As the number of such factors increases with deeper layers, their cumulative multiplication results in the gradients diminishing to nearly zero, a phenomenon known as the Vanishing Gradient Problem.
-
-Consequently, the gradients of convolutional layer weights become negligible, preventing the model from effectively learning since the weights cannot be updated after each iteration. Table 1 confirms this, showing that VGG38 achieves a training and validation accuracy of only 0.01, highlighting the detrimental impact of the vanishing gradients.
-
-In contrast, from table 1, the VGG08 model performs significantly better, achieving a training accuracy of 51.59\% and a validation accuracy of 46.84\%. As shown in Figure 2, the gradient flow in VGG08 is normal, and it does not exhibit signs of the vanishing gradient problem, as opposed to what is observed in Figure 3 for VGG38.
+As a result, the negligible gradients of the convolutional layer weights hinder the model's ability to learn effectively, since the weights cannot be updated appropriately during each iteration. This phenomenon is corroborated by Table 1, which shows that VGG38 attains a mere training and validation accuracy of 0.01, clearly illustrating the negative effects of vanishing gradients. In contrast, the VGG08 model demonstrates significantly better performance, achieving a training accuracy of 51.59\% and a validation accuracy of 46.84\%, as indicated in the same table. Figure 2 reveals that the gradient flow in VGG08 is healthy and does not suffer from the vanishing gradient problem, unlike the situation depicted in Figure 3 for VGG38.
 }
 }
 
 %% Question 2:
 \newcommand{\questionTwo} {
-\youranswer{Question 2 - Consider these results (including Figure 1 from \cite{he2016deep}). Discuss the relation between network capacity and overfitting, and whether, and how, this is reflected on these results. What other factors may have lead to this difference in performance?
+% Question 2 - Consider these results (including Figure 1 from \cite{he2016deep}). Discuss the relation between network capacity and overfitting, and whether, and how, this is reflected on these results. What other factors may have lead to this difference in performance?
 
-The average length for an answer to this question is
-approximately 1/5 of the columns in a 2-column page}
+% The average length for an answer to this question is
+% approximately 1/5 of the columns in a 2-column page
+\youranswer{
+In \cite{he2016deep}, Figure 1 illustrates that both training and testing errors are higher for a 56-layer network compared to a 20-layer network on the CIFAR-10 dataset. Additionally, Figure 4 compares 18-layer and 34-layer networks on ImageNet, again showing that the shallower model outperforms the deeper one.
+
+The authors attribute this phenomenon to a degradation problem in deeper networks, where accuracy initially plateaus and then declines during convergence. They argue that this issue is not due to overfitting but rather a challenge in model optimization, as deeper networks also perform poorly on training data. This could be related to the Vanishing Gradient Problem (VGP), which arises in deeper networks and hinders backpropagation because of diminishing gradients, ultimately preventing effective weight updates.
+
+Other factors that may contribute to the performance gap include the increased number of parameters in deeper networks, which makes them more difficult to optimize, as well as the effects of regularization techniques.
+}
 }
 
 %% Question 3:

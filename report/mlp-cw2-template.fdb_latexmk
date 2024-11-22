@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex mlp-cw2-template"] 1732240277 "mlp-cw2-template.aux" "mlp-cw2-template.bbl" "mlp-cw2-template" 1732240465
+["bibtex mlp-cw2-template"] 1732249661 "mlp-cw2-template.aux" "mlp-cw2-template.bbl" "mlp-cw2-template" 1732249678
   "./icml2017.bst" 1729694759 27014 3bf38cf1c3514ce2660b1751e86eb994 ""
-  "mlp-cw2-template.aux" 1732240465 4293 478a2c3cdc81193626a6b06d9838950e "pdflatex"
+  "mlp-cw2-template.aux" 1732249678 4293 dfe0bc22b0ce23bf33d069eee65aca09 "pdflatex"
   "refs.bib" 1731947672 5401 829a85120351d06250cbb3217d5f6d98 ""
   (generated)
   "mlp-cw2-template.bbl"
   "mlp-cw2-template.blg"
-["pdflatex"] 1732240464 "/home/natmaw/Documents/ML_Practical/mlpractical_natmaws/report/mlp-cw2-template.tex" "mlp-cw2-template.pdf" "mlp-cw2-template" 1732240465
+["pdflatex"] 1732249677 "/home/natmaw/Documents/ML_Practical/mlpractical_natmaws/report/mlp-cw2-template.tex" "mlp-cw2-template.pdf" "mlp-cw2-template" 1732249678
   "/etc/texmf/web2c/texmf.cnf" 1729699286 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/natmaw/.texlive2021/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk" 1732009456 6964 854fbaedef8353b644ffcefbd0a4a4c1 ""
   "/home/natmaw/Documents/ML_Practical/mlpractical_natmaws/report/mlp-cw2-template.tex" 1731947672 16351 260a5d6e7495b014d1e29645450a5c38 ""
@@ -167,10 +167,10 @@
   "figures/grad_flow_vgg08.pdf" 1731947672 17819 0b5b527cb311b4f1d22a98a88a00d37c ""
   "figures/gradplot_38.pdf" 1732239977 17329 3592270218b19e1c13d971c5372eba50 ""
   "figures/loss_plot.pdf" 1731947672 16092 922e9b2400517d61456a771f55e2f37d ""
-  "mlp-cw2-questions.tex" 1732240464 9553 9e11d8bdc4a4313bffdbc1a545832863 ""
-  "mlp-cw2-template.aux" 1732240465 4293 478a2c3cdc81193626a6b06d9838950e "pdflatex"
-  "mlp-cw2-template.bbl" 1732240277 3516 198a882540f21f9ae74f4044248f0440 "bibtex mlp-cw2-template"
-  "mlp-cw2-template.out" 1732240465 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "mlp-cw2-questions.tex" 1732249677 10553 00e0e4dd02a511a2cf7f6a5a45c98bad ""
+  "mlp-cw2-template.aux" 1732249678 4293 dfe0bc22b0ce23bf33d069eee65aca09 "pdflatex"
+  "mlp-cw2-template.bbl" 1732249662 3516 198a882540f21f9ae74f4044248f0440 "bibtex mlp-cw2-template"
+  "mlp-cw2-template.out" 1732249677 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "mlp-cw2-template.tex" 1731947672 16351 260a5d6e7495b014d1e29645450a5c38 ""
   "mlp2022.sty" 1731947672 24081 8f93c658bed5ca7a714981fb6c704da8 ""
   "mlp2022_includes.tex" 1731947672 1331 3e0605b34b8e85850b689f14f953e86b ""
