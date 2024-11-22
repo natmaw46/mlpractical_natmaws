@@ -26,9 +26,9 @@
 \newcommand{\questionOne} {
 % Question 1 - Use Figures 1, 2, and 3 to identify the Vanishing Gradient Problem (which of these model suffers from it, and what are the consequences depicted?).
 
-\youranswer{The VGG38 model struggles with the Vanishing Gradient Problem, as illustrated in Figure 3. The gradients of all convolutional layer weights are effectively zero, while only the final fully connected layer shows a peak gradient of up to 0.0002.
+\youranswer{The VGG38 model struggles with the Vanishing Gradient Problem, as illustrated in Figure 3. The gradients of all convolutional layer weights are effectively zero, while only the final fully connected layer shows a peak gradient of up to 0.00035.
 
-This issue arises during backpropagation, where each gradient update involves the multiplication of numerous factors. These factors, which include the derivatives of weights, biases, and non-linear activation functions, tend to approach zero. As the number of such factors increases with deeper layers, their cumulative multiplication results in the gradients diminishing to nearly zero—a phenomenon known as the Vanishing Gradient Problem.
+This issue arises during backpropagation, where each gradient update involves the multiplication of numerous factors. These factors, which include the derivatives of weights, biases, and non-linear activation functions, tend to approach zero. As the number of such factors increases with deeper layers, their cumulative multiplication results in the gradients diminishing to nearly zero, a phenomenon known as the Vanishing Gradient Problem.
 
 Consequently, the gradients of convolutional layer weights become negligible, preventing the model from effectively learning since the weights cannot be updated after each iteration. Table 1 confirms this, showing that VGG38 achieves a training and validation accuracy of only 0.01, highlighting the detrimental impact of the vanishing gradients.
 
@@ -87,9 +87,9 @@ The length of this question description is indicative of the average length of a
 %
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\linewidth]{figures/gradplot_38_watermarked.pdf}
+    \includegraphics[width=\linewidth]{figures/gradplot_38.pdf}
     \caption{Gradient Flow on VGG38}
-    \label{fig:avg_grad_flow_38}
+    \label{fig:grad_flow_38}
 \end{figure}
 }
 }
