@@ -43,6 +43,7 @@ def get_args():
                         help='Experiment name - to be used for building the experiment folder')
     parser.add_argument('--use_gpu', nargs="?", type=str2bool, default=True,
                         help='A flag indicating whether we will use GPU acceleration or not')
+    parser.add_argument('--learning_rate', nargs='?', type=float, default=1e-3, help='Learning Rate to be used')
     parser.add_argument('--weight_decay_coefficient', nargs="?", type=float, default=0,
                         help='Weight decay to use for Adam')
     parser.add_argument('--block_type', type=str, default='conv_block',
