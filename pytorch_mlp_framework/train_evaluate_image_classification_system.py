@@ -44,6 +44,18 @@ test_data_loader = DataLoader(test_data, batch_size=args.batch_size, shuffle=Tru
 if args.block_type == 'conv_block':
     processing_block_type = ConvolutionalProcessingBlock
     dim_reduction_block_type = ConvolutionalDimensionalityReductionBlock
+elif args.block_type == 'conv_bn_block':
+    #For implementing batch normalization only
+    processing_block_type = ConvProcessingBlockBN
+    dim_reduction_block_type = ConvDimReductionBlockBN
+elif args.block_type == 'conv_bn_rc_block':
+    #For implementing batch normalization in addition to residual connections
+    processing_block_type = ConvProcessingBlockBNRC
+    dim_reduction_block_type = ConvDimReductionBlockBN
+elif args.block_type == 'conv_res_block': 
+    # Inspired by the ResNet-50 architecture, consists of 3 conv layers in the processing block with residual connections and 4 conv layers in the dim reduction block one of which is used in the shortcut of the residual connection to make the dimensions equal
+    processing_block_type = ConvProcessingResBlock
+    dim_reduction_block_type = ConvDimReductionResBlock
 elif args.block_type == 'empty_block':
     processing_block_type = EmptyBlock
     dim_reduction_block_type = EmptyBlock
