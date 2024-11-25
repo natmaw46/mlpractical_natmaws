@@ -184,7 +184,7 @@ class ExperimentBuilder(nn.Module):
         loss.backward()  # backpropagate to compute gradients for current iter loss
         
         self.optimizer.step()  # update network parameters
-        self.learning_rate_scheduler.step()  # update learning rate scheduler
+        self.learning_rate_scheduler.step(epoch=self.current_epoch)  # update learning rate scheduler
         
         _, predicted = torch.max(out.data, 1)  # get argmax of predictions
         accuracy = np.mean(list(predicted.eq(y.data).cpu()))  # compute accuracy
