@@ -50,8 +50,14 @@ Other factors that may contribute to the performance gap include the increased n
 
 %% Question 3:
 \newcommand{\questionThree} {
-\youranswer{Question 3 - In this coursework, we didn't incorporate residual connections to the downsampling layers. Explain and justify what would need to be changed in order to add residual connections to the downsampling layers. Give and explain 2 ways of incorporating these changes and discuss pros and cons of each.
-}
+\youranswer{
+    % Question 3 - In this coursework, we didn't incorporate residual connections to the downsampling layers. Explain and justify what would need to be changed in order to add residual connections to the downsampling layers. Give and explain 2 ways of incorporating these changes and discuss pros and cons of each.
+    Incorporating residual connections into the downsampling layers of a neural network requires specific architectural modifications to ensure proper alignment of spatial dimensions and channel depth between the input and output. One effective method involves using a 1×1 convolution with the same stride as the downsampling operation on the residual path. This approach ensures that the dimensions and channel depth of the input match those of the downsampled output, facilitating seamless addition. This method is highly flexible and improves training stability by maintaining gradient flow; however, it adds extra parameters, which can increase the risk of overfitting, particularly with smaller datasets.
+
+    Another approach is to apply pooling operations, such as average pooling or strided pooling, on the residual path to spatially downsample the input without changing the channel depth. This method avoids adding parameters, making it computationally efficient and straightforward to implement. However, it may encounter challenges when the channel depth changes in the downsampling path, which could necessitate additional adjustments. Additionally, pooling can lead to information loss, potentially reducing the overall expressiveness of the model.
+    
+    The choice between these approaches depends on the specific requirements of the task. The 1×1 convolution method is better suited for tasks where flexibility and feature transformation are critical, while pooling-based downsampling is more appropriate for scenarios that prioritize simplicity and efficiency.
+    }
 }
 
 %% Question 4:
@@ -104,8 +110,24 @@ The length of this question description is indicative of the average length of a
 %
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\linewidth]{example-image-duck}
-    \caption{Training curves for ? ? ?}
+    % \includegraphics[width=\linewidth]{example-image-duck}
+    % \caption{Training curves for ? ? ?}
+    \begin{subfigure}[t]{\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/38_BN_RC_1e2_Loss.pdf} % Replace with your (a) image file
+        \caption{Cross-entropy error loss per epoch}
+        \label{fig:cross_entropy_error}
+    \end{subfigure}
+    % Subfigure for (b)
+    \begin{subfigure}[t]{\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/38_BN_RC_1e2_Accuracy.pdf} % Replace with your (b) image file
+        \caption{Classification accuracy per epoch}
+        \label{fig:classification_accuracy}
+    \end{subfigure}
+    
+    \caption{Training curves for VGG38 with Batch Normalisation and Residual Connections and learning rate 1e-2.}
+    
     \label{fig:training_curves_bestModel}
 \end{figure}
 }
@@ -117,8 +139,8 @@ The length of this question description is indicative of the average length of a
 %
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\linewidth]{example-image-duck}
-    \caption{Gradient Flow on ? ? ?}
+    \includegraphics[width=\linewidth]{figures/gradplot_38_BN_RC_1e2.pdf}
+    \caption{Gradient Flow on on VGG 38 with Batch Normalisation + Residual Connections + learning rate 1e-2}
     \label{fig:avg_grad_flow_bestModel}
 \end{figure}
 }
@@ -147,7 +169,7 @@ Question Table 1 - Fill in Table 1 with the results from your experiments on
         VGG38 RC                & 1e-3 & 336 K     &  1.33      & 61.52     & 1.84     & 52.32 \\
         VGG38 BN + RC           & 1e-3 & 339 K     &  1.26      & 62.99     & 1.73     & 53.76 \\
         VGG38 BN                & 1e-2 & 339 K     &  1.70      & 52.28     & 1.99     & 46.72 \\
-        VGG38 BN + RC           & 1e-2 & 339 K     &     ?      &     ?     &    ?     &     ? \\
+        VGG38 BN + RC           & 1e-2 & 339 K     &  0.96      & 71.09     & 1.55     & 59.92 \\
     \bottomrule
     \end{tabular}
     \caption{Experiment results (number of model parameters, Training and Validation loss and accuracy) for different combinations of VGG08, VGG38, Batch Normalisation (BN), and Residual Connections (RC), LR is learning rate.}
