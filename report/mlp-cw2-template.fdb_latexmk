@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex mlp-cw2-template"] 1732511724 "mlp-cw2-template.aux" "mlp-cw2-template.bbl" "mlp-cw2-template" 1732524271
+["bibtex mlp-cw2-template"] 1732511724 "mlp-cw2-template.aux" "mlp-cw2-template.bbl" "mlp-cw2-template" 1732524885
   "./icml2017.bst" 1729694759 27014 3bf38cf1c3514ce2660b1751e86eb994 ""
-  "mlp-cw2-template.aux" 1732524271 4880 fcb8e96421c7021f0074966408453e54 "pdflatex"
+  "mlp-cw2-template.aux" 1732524885 4880 fcb8e96421c7021f0074966408453e54 "pdflatex"
   "refs.bib" 1731947672 5401 829a85120351d06250cbb3217d5f6d98 ""
   (generated)
   "mlp-cw2-template.bbl"
   "mlp-cw2-template.blg"
-["pdflatex"] 1732524270 "/home/natmaw/Documents/ML_Practical/mlpractical_natmaws/report/mlp-cw2-template.tex" "mlp-cw2-template.pdf" "mlp-cw2-template" 1732524271
+["pdflatex"] 1732524884 "/home/natmaw/Documents/ML_Practical/mlpractical_natmaws/report/mlp-cw2-template.tex" "mlp-cw2-template.pdf" "mlp-cw2-template" 1732524885
   "/etc/texmf/web2c/texmf.cnf" 1729699286 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/natmaw/.texlive2021/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk" 1732009456 6964 854fbaedef8353b644ffcefbd0a4a4c1 ""
   "/home/natmaw/Documents/ML_Practical/mlpractical_natmaws/report/mlp-cw2-template.tex" 1731947672 16351 260a5d6e7495b014d1e29645450a5c38 ""
@@ -166,17 +166,17 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1729721761 4073795 a82a847ac97773bf4a607ab050efa3a1 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1729721766 1435796 55bea088fa6bb1673d7f320abb6b7964 ""
-  "figures/38_BN_RC_1e2_Accuracy.pdf" 1732493513 16224 1dbbba0aa3afeb048785c1a734d18d14 ""
-  "figures/38_BN_RC_1e2_Loss.pdf" 1732493513 16187 5e9f7d4e7a1af3a8891ab817cb299b32 ""
+  "figures/38_BN_RC_1e2_Accuracy.pdf" 1732524467 16175 8c9063fe13a88eaa4e89448939fad891 ""
+  "figures/38_BN_RC_1e2_Loss.pdf" 1732524467 16247 cb31a057f0e484481d1eea5d6fbe74a7 ""
   "figures/accuracy_plot.pdf" 1731947672 15585 3b1ed00f1b3cd05a65e487fdfab68893 ""
   "figures/grad_flow_vgg08.pdf" 1731947672 17819 0b5b527cb311b4f1d22a98a88a00d37c ""
   "figures/gradplot_38.pdf" 1732239977 17329 3592270218b19e1c13d971c5372eba50 ""
-  "figures/gradplot_38_BN_RC_1e2.pdf" 1732489779 38102 384a20df889703b800f9526e267958f6 ""
+  "figures/gradplot_38_BN_RC_1e2.pdf" 1732524391 37804 63c9fe012274e4c4906a8261f618fa8c ""
   "figures/loss_plot.pdf" 1731947672 16092 922e9b2400517d61456a771f55e2f37d ""
-  "mlp-cw2-questions.tex" 1732524270 12950 4897576f8aa4ae116993fd2dc2bea280 ""
-  "mlp-cw2-template.aux" 1732524271 4880 fcb8e96421c7021f0074966408453e54 "pdflatex"
+  "mlp-cw2-questions.tex" 1732524884 12857 58e1b31839ec0910491c25dc0800bc89 ""
+  "mlp-cw2-template.aux" 1732524885 4880 fcb8e96421c7021f0074966408453e54 "pdflatex"
   "mlp-cw2-template.bbl" 1732511724 3516 198a882540f21f9ae74f4044248f0440 "bibtex mlp-cw2-template"
-  "mlp-cw2-template.out" 1732524270 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "mlp-cw2-template.out" 1732524885 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "mlp-cw2-template.tex" 1731947672 16351 260a5d6e7495b014d1e29645450a5c38 ""
   "mlp2022.sty" 1731947672 24081 8f93c658bed5ca7a714981fb6c704da8 ""
   "mlp2022_includes.tex" 1731947672 1331 3e0605b34b8e85850b689f14f953e86b ""
