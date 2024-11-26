@@ -29,7 +29,7 @@
 \youranswer{
     The VGG38 model encounters the Vanishing Gradient Problem, as demonstrated in Figure 3. During backpropagation, the gradients for the weights in the convolutional layers approach zero, while only the final fully connected layer exhibits a peak gradient of up to 0.00035. This issue arises because each gradient update relies on the multiplication of multiple factors, such as the derivatives of weights, biases, and non-linear activation functions. As the number of layers increases, these factors tend to diminish, leading to the gradients becoming nearly zero.
 
-As a result, the negligible gradients of the convolutional layer weights hinder the model's ability to learn effectively, since the weights cannot be updated appropriately during each iteration. This phenomenon is corroborated by Table 1, which shows that VGG38 attains a mere training and validation accuracy of 0.01, clearly illustrating the negative effects of vanishing gradients. In contrast, the VGG08 model demonstrates significantly better performance, achieving a training accuracy of 51.59\% and a validation accuracy of 46.84\%, as indicated in the same table. Figure 2 reveals that the gradient flow in VGG08 is healthy and does not suffer from the vanishing gradient problem, unlike the situation depicted in Figure 3 for VGG38.
+As a result, the negligible gradients of the convolutional layer weights hinder the model's ability to learn effectively, since the weights cannot be updated appropriately during each iteration. This phenomenon is shown by Table 1, which shows that VGG38 attains a mere training and validation accuracy of 0.01, clearly illustrating the negative effects of vanishing gradients. In contrast, the VGG08 model demonstrates significantly better performance, achieving a training accuracy of 51.59\% and a validation accuracy of 46.84\%, as indicated in the same table. Figure 2 reveals that the gradient flow in VGG08 is healthy and does not suffer from the vanishing gradient problem, unlike the situation depicted in Figure 3 for VGG38.
 }
 }
 
@@ -62,28 +62,51 @@ Other factors that may contribute to the performance gap include the increased n
 
 %% Question 4:
 \newcommand{\questionFour} {
-\youranswer{Question 4 - Present and discuss the experiment results (all of the results and not just the ones you had to fill in) in Table 1 and Figures 4 and 5 (you may use any of the other Figures if you think they are relevant to your analysis). You will have to determine what data are relevant to the discussion, and what information can be extracted from it. Also, discuss what further experiments you would have ran on any combination of VGG08, VGG38, BN, RC in order to
-\begin{itemize}
-    \item Improve performance of the model trained (explain why you expect your suggested experiments will help with this).
-    \item Learn more about the behaviour of BN and RC (explain what you are trying to learn and how).
-\end{itemize}
+    %     Question 4 - Present and discuss the experiment results (all of the results and not just the ones you had to fill in) in Table 1 and Figures 4 and 5 (you may use any of the other Figures if you think they are relevant to your analysis). You will have to determine what data are relevant to the discussion, and what information can be extracted from it. Also, discuss what further experiments you would have ran on any combination of VGG08, VGG38, BN, RC in order to
+    % \begin{itemize}
+    %     \item Improve performance of the model trained (explain why you expect your suggested experiments will help with this).
+    %     \item Learn more about the behaviour of BN and RC (explain what you are trying to learn and how).
+    % \end{itemize}
+    
+    % The average length for an answer to this question is approximately 1 of the columns in a 2-column page
+    
+\youranswer{Based on the results in Table 1, we can clearly see that VGG38 models with Batch Normalization (BN) or Residual Connections (RC) show significantly better results than the original VGG38. The validation accuracy improves dramatically from a negligible 0.01\% to 49.32\% and 52.32\% for configurations incorporating either BN or RC, and to 53.76\% when using both (all with a learning rate of 1e-3). This indicates that both BN and RC effectively address the vanishing gradient problem (VGP), stabilizing and enhancing the learning process. Moreover, these modified VGG38 models achieve comparable or superior performance to the shallower VGG08 model, consistent with theoretical expectations that deeper networks can generalize better when trained effectively.
 
-The average length for an answer to this question is approximately 1 of the columns in a 2-column page
+Comparing the results of VGG38 BN at learning rates of 1e-3 and 1e-2, we observe that the validation accuracy drops slightly from 49.32\% to 46.72\%, suggesting that BN ensures stability but may not fully leverage higher learning rates. In contrast, VGG38 BN + RC shows an increase in validation accuracy from 53.76\% to 59.96\% when the learning rate is raised from 1e-3 to 1e-2. This suggests that the combined use of BN and RC enables the model to benefit more effectively from larger learning rates, likely due to the synergistic effects of gradient stabilization and improved flow through the network.
+
+A comparison between VGG38 BN and VGG38 RC (both with learning rates of 1e-3) shows that RC achieves a validation accuracy of 52.32\%, higher than the 49.32\% achieved with BN. Additionally, RC does not introduce extra parameters, maintaining a parameter count of 336K compared to BN’s 339K. This efficiency highlights RC’s strength as a tool for improving performance without increasing model complexity.
+
+Among all configurations, the best performance is observed with VGG38 BN + RC at a learning rate of 1e-2, achieving the highest training accuracy of 83.03\% and validation accuracy of 59.96\%. Figure 5 likely confirms this by showing stable and enhanced gradient flow when BN and RC are combined, effectively mitigating the VGP. Additionally, Figure 4’s training and validation accuracy curves would demonstrate clear upward trends, while cross-entropy loss curves would slope downward, further validating the model’s improved performance. However, a noticeable gap between training and validation accuracy suggests that overfitting may be a concern, as evidenced by the lower validation accuracy relative to training.
+
+To further improve model performance, a potential direction could involve experimenting with alternative optimizers or architectural modifications. For instance, employing advanced optimizers like AdamW or Ranger could enhance training efficiency and improve convergence, particularly when combined with techniques like Batch Normalization (BN) and Residual Connections (RC). Additionally, exploring architectural changes such as varying kernel sizes or introducing attention mechanisms could further refine feature extraction and improve performance. These adjustments could leverage the strengths of BN and RC while addressing potential limitations in the current setup.
+
+Another avenue for future experiments involves integrating additional regularization techniques. For instance, applying dropout layers or L1/L2 regularization could address overfitting observed in models like VGG38 BN + RC at 1e-2. Exploring combinations of BN and RC with these techniques might lead to models with even better generalization on unseen data. Finally, ablation studies isolating the individual contributions of BN and RC could provide further insights into their roles in improving gradient behavior and optimization, paving the way for more robust model designs.
+
 }
 }
 
 
 %% Question 5:
 \newcommand{\questionFive} {
-\youranswer{Question 5 - Briefly draw your conclusions based on the results from the previous sections (what are the take-away messages?) and conclude your report with a recommendation for future work. 
+\youranswer{
+Based on the results obtained from the experiments with VGG38, Batch Normalization (BN), and Residual Connections (RC), several important conclusions can be drawn. Both BN and RC techniques demonstrated significant improvements in the performance of deep convolutional networks, effectively addressing the vanishing gradient problem (VGP) and stabilizing the optimization process. In particular, VGG38 with BN and RC achieved the best performance, with validation accuracy reaching 59.96\% at a learning rate of 1e-2. This improvement is attributed to the combined benefits of BN, which smooths the optimization landscape, and RC, which enhances gradient flow through the network. These findings are consistent with prior research, such as \cite{ioffe2015batch} and \cite{he2016deep}, which highlighted the critical roles of these techniques in facilitating deep network training.
 
-Good recommendations for future work also draw on the broader literature (the papers already referenced are good starting points). Great recommendations for future work are not just incremental (an example of an incremental suggestion would be: ``we could also train with different learning rates'') but instead also identify meaningful questions or, in other words, questions with answers that might be somewhat more generally applicable. 
+However, despite these gains, overfitting remains a challenge, particularly for the model with both BN and RC at higher learning rates. The gap between training and validation accuracy suggests that regularization methods must be incorporated to further improve model generalization. Thus, future work should focus on enhancing the robustness of deep learning models by exploring advanced regularization strategies, such as dropout, L1/L2 penalties, or stronger data augmentation techniques. Additionally, integrating attention mechanisms into the architecture could improve feature selection and global context awareness, further enhancing model performance.
 
-For example, \citep{huang2017densely} end with \begin{quote}``Because of their compact internal representations and reduced feature redundancy, DenseNets may be good feature extractors for various computer vision tasks that build on convolutional features, e.g.,  [4,5].''\end{quote} 
+Another potential area for future exploration is the use of advanced optimizers such as AdamW or Ranger, which may help accelerate convergence and improve stability, particularly when training very deep networks. Experimenting with learning rate schedules, such as cosine annealing or warm restarts, could further refine the training process, making it more adaptive to changing optimization dynamics as training progresses.
 
-while \cite{bengio1993problem} state in their conclusions that \begin{quote}``There remains theoretical questions to be considered,  such as whether the problem with simple gradient descent  discussed in this paper would be observed with  chaotic attractors that are not  hyperbolic.''\\\end{quote}
+In conclusion, while BN and RC have demonstrated their efficacy in stabilizing the optimization of deep convolutional networks, significant challenges, such as overfitting and optimization efficiency, remain. By investigating novel regularization techniques, better understanding the synergies between BN and RC, and exploring the potential of advanced optimizers and architectural innovations, future work could lead to more robust and efficient deep learning models. These efforts will not only enhance the performance of networks like VGG38 but also contribute to broader advances in deep learning and its application across various domains.
 
-The length of this question description is indicative of the average length of a conclusion section}
+%     Question 5 - Briefly draw your conclusions based on the results from the previous sections (what are the take-away messages?) and conclude your report with a recommendation for future work. 
+
+% Good recommendations for future work also draw on the broader literature (the papers already referenced are good starting points). Great recommendations for future work are not just incremental (an example of an incremental suggestion would be: ``we could also train with different learning rates'') but instead also identify meaningful questions or, in other words, questions with answers that might be somewhat more generally applicable. 
+
+% For example, \citep{huang2017densely} end with \begin{quote}``Because of their compact internal representations and reduced feature redundancy, DenseNets may be good feature extractors for various computer vision tasks that build on convolutional features, e.g.,  [4,5].''\end{quote} 
+
+% while \cite{bengio1993problem} state in their conclusions that \begin{quote}``There remains theoretical questions to be considered,  such as whether the problem with simple gradient descent  discussed in this paper would be observed with  chaotic attractors that are not  hyperbolic.''\\\end{quote}
+
+% The length of this question description is indicative of the average length of a conclusion section
+}
 }
 
 
